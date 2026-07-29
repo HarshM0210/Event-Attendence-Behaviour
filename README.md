@@ -12,38 +12,13 @@ Given publicly observable event characteristics — timing, location, category, 
 
 ## Dataset
 
-- **Source:** Bay Area Indian-American (and mixed) cultural event attendance records, 2000–2025
+- **Source:** Bay Area Indian-American (and mixed) cultural event attendance records, 2000–2025, proprietary dataset belonging to Dukami Enterprises Pvt. Ltd.
 - **Size:** 1664 rows
 - **Events covered:** Indian Community Events (Diwali, Navratri, Holi, Garba, Patriotic), Tech Conferences (Google I/O, Apple WWDC, RSA Conference, Dreamforce), Cultural Festivals (SF Pride, Outside Lands, Chinese New Year Parade), and others.
 - **Target variable:** `% Tickets Sold` — continuous, range 7.7% to 100.0%, mean ~74%
 - **Train/Test split:** 80/20 stratified on quartile bins of target (`random_state=42`)
   - Train: 1,331 rows
   - Test: 333 rows
-
----
-
-## Features
-
-9 features total — 5 base features and 4 engineered interaction features.
-
-### Base Features (5)
-
-| Feature            | Source Column  | Encoding                                                                                |
-| ------------------ | -------------- | --------------------------------------------------------------------------------------- |
-| `Month_sin`        | Month          | sin(2π·month/12) — cyclical encoding                                                    |
-| `Month_cos`        | Month          | cos(2π·month/12) — cyclical encoding                                                    |
-| `EventCat_encoded` | Event Category | Target encoding — mean % sold per category, smoothing=10, computed on training set only |
-| `Location_encoded` | Location       | Target encoding — mean % sold per location, smoothing=10, computed on training set only |
-| `Event_Scaled`     | Event Scale    | Ordinal — Small=0, Medium=1, Large=2                                                    |
-
-### Interaction Features (4)
-
-| Feature             | Computation                         | Rationale                                |
-| ------------------- | ----------------------------------- | ---------------------------------------- |
-| `Weekend_x_Holiday` | Is_Weekend_Day × Next_Day_Holiday   | Captures peak attendance conditions      |
-| `Cat_x_Holiday`     | EventCat_encoded × Next_Day_Holiday | Category-specific holiday effect         |
-| `Cat_x_Weekend`     | EventCat_encoded × Is_Weekend_Day   | Category-specific weekend effect         |
-| `Scale_x_Cat`       | Event_Scaled × EventCat_encoded     | Scale interacts differently per category |
 
 ---
 
