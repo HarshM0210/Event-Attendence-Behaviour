@@ -1,6 +1,6 @@
 # Event Attendance Prediction: Bay Area, San Francisco
 
-A machine learning pipeline to predict ticket sell-through (% Tickets Sold) for Bay Area cultural and community events, using ensemble methods with domain-specific optimization techniques.
+A machine learning pipeline to predict ticket sell-through for Bay Area cultural and community events, using ensemble methods with domain-specific optimization techniques.
 
 ---
 
