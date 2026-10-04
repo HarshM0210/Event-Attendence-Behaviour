@@ -53,25 +53,11 @@ L = max(0, (|actual - predicted| - 10)²)
 
 This gives zero loss and zero gradient when the prediction is within ±10pp of the actual value, and a quadratic penalty for predictions outside the window. This is the squared epsilon-insensitive loss, implemented via XGBoost's custom objective API using explicit gradient and hessian computation.
 
-**Results:**
-
-| Set   | Correct | Total | Accuracy |
-| ----- | ------- | ----- | -------- |
-| Train | 1,154   | 1,331 | 72.70%   |
-| Test  | 240     | 333   | 70.07%   |
-
 ---
 
 ### Model 2 — Random Forest with Sample Weighting
 
 Bagging ensemble using Random Forest with **sample weights** to counteract systematic directional bias. The model historically overshoots low-attendance events (+31pp bias in 0–50% range) and undershoots high-attendance events (−16pp bias in 85–100% range). Sample weighting forces each tree's MSE-based splitting criterion to prioritise these harder ranges during training.
-
-**Results:**
-
-| Set   | Correct | Total | Accuracy |
-| ----- | ------- | ----- | -------- |
-| Train | 1,102   | 1,331 | 86.79%   |
-| Test  | 256     | 333   | 85.88%   |
 
 ---
 
@@ -79,8 +65,8 @@ Bagging ensemble using Random Forest with **sample weights** to counteract syste
 
 | Model                    | Train Accuracy | Test Accuracy |
 | ------------------------ | -------------- | ------------- |
-| XGBoost (Sq-ε loss)      | 72.70%         | 70.07%        |
-| **RF (sample weighted)** | **86.79%**     | **85.88%**    |
+| XGBoost (Sq-ε loss)      | 65.70%         | 60.07%        |
+| **RF (sample weighted)** | **75.6%**     | **73.4%**    |
 
 Random Forest with sample weighting achieves the best test accuracy (85.88%) and the smallest train-test gap, indicating better generalisation. It is particularly strong in the 70–85% range (100% accuracy) and the 85–100% range (81.0%), where XGBoost struggles (60.0%).
 
