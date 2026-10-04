@@ -68,6 +68,6 @@ Bagging ensemble using Random Forest with **sample weights** to counteract syste
 | XGBoost (Sq-ε loss)      | 65.70%         | 60.07%        |
 | **RF (sample weighted)** | **75.6%**     | **73.4%**    |
 
-Random Forest with sample weighting achieves the best test accuracy (85.88%) and the smallest train-test gap, indicating better generalisation. It is particularly strong in the 70–85% range (100% accuracy) and the 85–100% range (81.0%), where XGBoost struggles (60.0%).
+Random Forest with sample weighting achieves the best test accuracy (73.4%) and the smallest train-test gap, indicating better generalisation. It is particularly strong in the 70–85% range (100% accuracy) and the 85–100% range (81.0%), where XGBoost struggles (60.0%).
 
 XGBoost with the custom loss function shows higher training accuracy but a larger generalisation gap, reflecting the difficulty of applying gradient-based custom objectives to a dataset of this size (1,331 training rows).
