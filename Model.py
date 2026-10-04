@@ -34,7 +34,7 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 import openpyxl
 
-WINDOW = 20
+WINDOW = 10
 
 
 # ─────────────────────────────────────────────────────────────────
